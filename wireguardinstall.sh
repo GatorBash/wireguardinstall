@@ -31,9 +31,9 @@ echo "[Interface]" >> wg0.conf
 echo "PrivateKey = " >> wg0.conf
 echo "Address = " >> wg0.conf
 echo "[Peer]" >> wg0.conf
-echo "PublicKey = sgCy0AVDqUwsbp/fZl/dNWSy1RLLNEb4BiCF2TukiXA=" >> wg0.conf
+echo "PublicKey = <server public key" >> wg0.conf
 echo "AllowedIPs = 0.0.0.0/0" >> wg0.conf
-echo "Endpoint = 137.184.151.23:55234" >> wg0.conf
+echo "Endpoint = <server public ip:port>" >> wg0.conf
 echo "PersistentKeepalive = 25"
 sed -i "/$old_key/c\\$old_key$key" wg0.conf
 else
