@@ -22,7 +22,6 @@ sudo apt install wireguard wireguard-dkms wireguard-tools -y
 wait
 echo "Hopefully that didn't error out"
 sleep 5
-echo "get ready for your password again"
 cd /etc/wireguard
 umask 077
 wg genkey | tee privatekey | wg pubkey > publickey
@@ -35,8 +34,9 @@ echo "PublicKey = <server public key" >> wg0.conf
 echo "AllowedIPs = 0.0.0.0/0" >> wg0.conf
 echo "Endpoint = <server public ip:port>" >> wg0.conf
 echo "PersistentKeepalive = 25"
+#the sed command is ment to add in your private key to the config file but it has been hit or miss
 sed -i "/$old_key/c\\$old_key$key" wg0.conf
 else
-	echo "sign into root using 'sudo -i'"
+	echo "sign into root using 'sudo -i' and run the script again."
 	exit
 fi
