@@ -38,6 +38,7 @@ then
 	echo "Make sure that you use private ip address ranges for your ips and use a cidr of /32"
 	sleep 3
 	clear
+	echo "Done GLHF!"
 	else
 		echo "Sign into root using 'sudo -i' and run the script again"
 		exit
