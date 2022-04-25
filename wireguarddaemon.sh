@@ -11,14 +11,16 @@ echo "3) exit"
 read r
 if [[ "$r" = [1-3] ]]
 then
-	case $r
+	case $r in
 		1)
 			sudo systemctl enable wg-quick@wg0
+			wait
 			echo "wireguard enabled"
 			;;
 
 		2)
 			sudo systemctl disable wg-quick@wg0
+			wait
 			echo "wireguard disabled"
 			;;
 
