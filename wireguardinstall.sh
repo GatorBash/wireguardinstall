@@ -34,11 +34,14 @@ echo "What IP are you going to use for your client?"
 read client
 echo "[Interface]" >> wg0.conf
 echo "PrivateKey = $key" >> wg0.conf
+sleep 1
 echo "Address = $client" >> wg0.conf
+sleep 1
 echo "[Peer]" >> wg0.conf
-echo "PublicKey = <server public key" >> wg0.conf
+echo "PublicKey = <server public key>" >> wg0.conf
 echo "AllowedIPs = 0.0.0.0/0" >> wg0.conf
-echo "Endpoint = $server:$port>" >> wg0.conf
+echo "Endpoint = $server:$port" >> wg0.conf
+sleep 1
 echo "PersistentKeepalive = 25" >> wg0.conf
 #the sed command is ment to add in your private key to the config file but it has been hit or miss
 #sed -i "/$old_key/c\\$old_key$key" wg0.conf
