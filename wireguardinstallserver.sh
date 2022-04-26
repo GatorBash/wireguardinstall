@@ -1,6 +1,6 @@
 #!/bin/bash
 
-key=$(more privatekey)
+key=$(cat privatekey)
 dir='/etc/wireguard'
 
 echo "Are you logged in as root? y or n."
