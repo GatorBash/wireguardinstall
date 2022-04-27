@@ -1,11 +1,11 @@
 #!/bin/bash
 
 key=$(cat privatekey)
-dir='/etc/wireguard'
+dir=/etc/wireguard
 
 echo "Are you logged in as root? y or n."
-read r
-if [ $r = y ]
+read -r r
+if [ "$r" = y ]
 then
 	echo "Here comes your server install"
 	sleep 3
@@ -20,7 +20,7 @@ then
 	clear
 	echo "Making keys and configuration file."
 	sleep 5
-	cd /etc/wireguard
+	cd $dir
 	umask 077
 	wg genkey | tee privatekey | wg pubkey > publickey
 	touch wg0.conf
