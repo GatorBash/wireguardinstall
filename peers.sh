@@ -7,14 +7,14 @@ pubkey=$(cat "$pub")
 
 echo "Are you logged in as root? y/n "
 read -r rep
-if [ $rep == n ]
+if [ "$rep" == n ]
 then
 	echo "Sign into root using \"sudo -i \""
 else
 	clear
 	echo "Since you're here, I'm guessing that you want to add some more peers to your serverconfig file."
 	echo "Is that true? y/n"
-	read peer
+	read -r peer
 	while [ "$peer" == y ]
 	do
 		echo "Ok lets do this?"
