@@ -2,6 +2,7 @@
 
 #this is ment to be used to create more peers in the wireguard servers config file
 #dir=/etc/wireguard
+file=/etc/wireguard/wg0.conf
 
 echo "Are you logged in as root? y/n "
 read -r rep
@@ -13,7 +14,6 @@ else
 	echo "Since you're here, I'm guessing that you want to add some more peers to your serverconfig file."
 	echo "Is that true? y/n"
 	read -r peer
-	file=/etc/wireguard/wg0.conf
 	while [ "$peer" == y ]
 	do
 		echo "Ok lets do this?"
@@ -51,5 +51,6 @@ else
 		echo "Do you want to make another peer for your config? y/n"
 		read -r peer
 	done
+	echo "Ok that should do it GLHF"
 fi
-echo "Ok that should do it GLHF"
+
