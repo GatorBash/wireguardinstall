@@ -1,9 +1,7 @@
 #!/bin/bash
 
 #this is ment to be used to create more peers in the wireguard servers config file
-file=/etc/wireguard/wg0.conf
 #dir=/etc/wireguard
-pubkey=$(cat "$pub")
 
 echo "Are you logged in as root? y/n "
 read -r rep
@@ -15,6 +13,7 @@ else
 	echo "Since you're here, I'm guessing that you want to add some more peers to your serverconfig file."
 	echo "Is that true? y/n"
 	read -r peer
+	file=/etc/wireguard/wg0.conf
 	while [ "$peer" == y ]
 	do
 		echo "Ok lets do this?"
@@ -29,6 +28,7 @@ else
 		else
 			echo "2ez what is the absolute path to the file?"
 			read -r pub
+			pubkey=$(cat "$pub")
 		fi
 		if [ "$c" == n ]
 		then
