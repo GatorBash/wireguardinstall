@@ -3,10 +3,10 @@
 #this is ment to be used to create more peers in the wireguard servers config file
 file=/etc/wireguard/wg0.conf
 #dir=/etc/wireguard
-pubkey=$(cat $pub)
+pubkey=$(cat "$pub")
 
 echo "Are you logged in as root? y/n "
-read rep
+read -r rep
 if [ $rep == n ]
 then
 	echo "Sign into root using \"sudo -i \""
@@ -15,22 +15,22 @@ else
 	echo "Since you're here, I'm guessing that you want to add some more peers to your serverconfig file."
 	echo "Is that true? y/n"
 	read peer
-	while [ $peer == y ]
+	while [ "$peer" == y ]
 	do
 		echo "Ok lets do this?"
 		umask 077
 		echo "What IP do you want to use for your client? Include the CIDR."
-		read ip
+		read -r ip
 		echo "Do you have the public key for the client? y/n"
-		read c
-		if [ $c == n ]
+		read -r c
+		if [ "$c" == n ]
 		then
 			echo "Ok you will have to add it to the file later"
 		else
 			echo "2ez what is the absolute path to the file?"
-			read pub
+			read -r pub
 		fi
-		if [ $c == n ]
+		if [ "$c" == n ]
 		then
 			echo " " >> $file
 			sleep 1
@@ -49,7 +49,7 @@ else
 			echo "AllowedIPs = $ip" >> $file
 		fi
 		echo "Do you want to make another peer for your config? y/n"
-		read peer
+		read -r peer
 	done
 fi
 echo "Ok that should do it GLHF"
