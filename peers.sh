@@ -2,7 +2,7 @@
 
 #this is ment to be used to create more peers in the wireguard servers config file
 file=/etc/wireguard/wg0.conf
-dir=/etc/wireguard
+#dir=/etc/wireguard
 pubkey=$(cat $pub)
 
 echo "Are you logged in as root? y/n "
