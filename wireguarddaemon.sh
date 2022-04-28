@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0 ]]
+then
+   echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
+   exit 1
+fi
 echo "Hello!"
 sleep 3
 echo "Lets set up the daemon for you."
