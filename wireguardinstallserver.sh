@@ -3,10 +3,12 @@
 key=$(cat privatekey)
 dir=/etc/wireguard
 
-echo "Are you logged in as root? y or n."
-read -r r
-if [ "$r" = y ]
+#this ensures the user is root
+if [[ $EUID -ne 0 ]]
 then
+   echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
+   exit 1
+else
 	echo "Here comes your server install"
 	sleep 3
 	clear
@@ -25,7 +27,7 @@ then
 	wg genkey | tee privatekey | wg pubkey > publickey
 	touch wg0.conf
 	echo "[Interface]" >> wg0.conf
-	echo "PrivateKey = $key" >> wg0.conf
+	echo "PrivateKey = ""$key""" >> wg0.conf
 	echo "Address = <personalized private ip>" >> wg0.conf
 	echo "ListenPort = 65535" >> wg0.conf
 	echo "Adding some IPtables BS."
@@ -39,8 +41,5 @@ then
 	sleep 3
 	clear
 	echo "Done GLHF!"
-	else
-		echo "Sign into root using 'sudo -i' and run the script again"
-		exit
 fi
 
