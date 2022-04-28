@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #this ensures the user is root
-if [[ $EUID -ne 0 ]]; then
+if [[ $EUID -ne 0 ]]
+then
    echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
    exit 1
 fi
