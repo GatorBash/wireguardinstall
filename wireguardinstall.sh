@@ -4,10 +4,11 @@ key=$(cat privatekey)
 #old_key='PrivateKey = '
 dir='/etc/wireguard'
 
-echo "Are you logged in as root? y or n "
-read -r r
-if [ "$r" = y ]
+if [[ $EUID -ne 0 ]]
 then
+   echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
+   exit 1
+else
 	echo "ok we are gonna make this nice"
 	sleep 3
 	echo "and...."
@@ -52,15 +53,12 @@ then
 		read -r pub
 		pubkey=$(cat "$pub")
 		echo "[Peer]" >> wg0.conf
-		echo "PublicKey = "$pubkey"" >> wg0.conf
+		echo "PublicKey = ""$pubkey""" >> wg0.conf
 		echo "AllowedIPs = 0.0.0.0/0" >> wg0.conf
-		echo "Endpoint = $server:$port" >> wg0.conf
+		echo "Endpoint = ""$server"":""$port""" >> wg0.conf
 		sleep 1
 		echo "PersistentKeepalive = 25" >> wg0.conf
 	fi
 #the sed command is ment to add in your private key to the config file but it has been hit or miss
 #sed -i "/$old_key/c\\$old_key$key" wg0.conf
-else
-	echo "sign into root using 'sudo -i' and run the script again."
-	exit 0
 fi
