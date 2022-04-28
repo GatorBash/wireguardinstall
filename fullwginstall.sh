@@ -24,6 +24,8 @@ then
 	wait
 	./wireguardpeers.sh
 	wait
+	echo "With all that you should be set up."
+	echo "GLHF"
 else
 	echo "Fully type out client or server"
 fi
