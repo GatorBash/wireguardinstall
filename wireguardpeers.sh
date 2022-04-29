@@ -4,11 +4,10 @@
 #dir=/etc/wireguard
 file=/etc/wireguard/wg0.conf
 
-echo "Are you logged in as root? y/n "
-read -r rep
-if [ "$rep" == n ]
+if [[ $EUID -ne 0 ]]
 then
-	echo "Sign into root using \"sudo -i \""
+   echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
+   exit 1
 else
 	clear
 	echo "Since you're here, I'm guessing that you want to add some more peers to your serverconfig file."
@@ -44,9 +43,9 @@ else
 			sleep 1
 			echo "[Peer]" >> $file
 			sleep 1
-			echo "PublicKey = $pubkey" >> $file
+			echo "PublicKey = ""$pubkey""" >> $file
 			sleep 1
-			echo "AllowedIPs = $ip" >> $file
+			echo "AllowedIPs = ""$ip""" >> $file
 		fi
 		echo "Do you want to make another peer for your config? y/n"
 		read -r peer
