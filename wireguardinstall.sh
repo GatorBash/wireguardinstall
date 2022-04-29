@@ -2,7 +2,7 @@
 
 key=$(cat privatekey)
 #old_key='PrivateKey = '
-dir='/etc/wireguard'
+#dir='/etc/wireguard'
 
 if [[ $EUID -ne 0 ]]
 then
