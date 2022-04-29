@@ -16,10 +16,11 @@ else
 	echo "easy"
 	sleep 5
 	echo "First we're going to update and install some things"
-	sudo apt update -y
+	apt update -y
 	wait
-	sudo apt install wireguard wireguard-dkms wireguard-tools -y
+	apt install wireguard wireguard-dkms wireguard-tools -y
 	wait
+	apt install ifmetric
 	clear
 	echo "Hopefully that didn't error out"
 	sleep 5
