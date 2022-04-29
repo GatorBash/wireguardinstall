@@ -6,7 +6,7 @@ then
    echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
    exit 1
 fi
-chomod +x *
+chomod +x *.sh
 echo "Are you running this on the server or the client?"
 read -r dev
 if [ "$dev" == client ]
