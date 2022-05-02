@@ -12,9 +12,8 @@ Of course you'll also need an internet connection.
 # How to use this
 
 You'll need to do just a couple of things.
-- Make sure you're logged in as root.  You can do this with 'sudo -i'
+- Make sure you're logged in as root.  You can do this with `sudo -i`
 - Ensure that you're connected to the internet.
-- **Before** you do anything you will need to 'cd into the wireguardinstall directory.
+- **Before** you do anything you will need to `cd` into the wireguardinstall directory.
 - Then you will need to make the install script exitcutable.
--   To do this you will 
--   'chomod +x  fullwginstall.sh
+- `chomod +x  fullwginstall.sh`
