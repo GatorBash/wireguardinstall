@@ -1,7 +1,20 @@
-# wireguardinstall
-wireguard installation script to make life easier
-One of the scrips will need to be run on your client computer.
-the other will need to be run on the server.
-both scripts will need to be run as root as we will be doing an update and,
-the wireguard directory will require you to access it as root
-you can watch for handshakes by useing the wg command
+# WireguardInstall
+
+I've made several scripts posted here to make life a little better.
+I hope you find it helpful
+
+# Requirements 
+
+This set of scripts is intended to be used on Debian based computers.
+If you aren't using Debian you'll need to change the package manager.
+Of course you'll also need an internet connection.
+
+# How to use this
+
+You'll need to do just a couple of things.
+- Make sure you're logged in as root.  You can do this with 'sudo -i'
+- Ensure that you're connected to the internet.
+- **Before** you do anything you will need to 'cd into the wireguardinstall directory.
+- Then you will need to make the install script exitcutable.
+-   To do this you will 
+-   'chomod +x  fullwginstall.sh
