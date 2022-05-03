@@ -17,3 +17,4 @@ You'll need to do just a couple of things.
 - **Before** you do anything you will need to `cd` into the wireguardinstall directory.
 - Then you will need to make the install script exitcutable.
 - `chomod +x  fullwginstall.sh`
+- `./fullwginstall.sh`
