@@ -18,3 +18,12 @@ You'll need to do just a couple of things.
 - Then you will need to make the install script exitcutable.
 - `chomod +x  fullwginstall.sh`
 - `./fullwginstall.sh`
+
+# Need to Know
+
+
+
+# Issues
+
+If you have any issues please let me know so I can get'em fixed.
+
