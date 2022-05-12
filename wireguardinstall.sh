@@ -1,6 +1,5 @@
 #!/bin/bash
 
-key=$(cat privatekey)
 #old_key='PrivateKey = '
 #dir='/etc/wireguard'
 
@@ -27,6 +26,7 @@ else
 	cd /etc/wireguard
 	umask 077
 	wg genkey | tee privatekey | wg pubkey > publickey
+	key=$(cat privatekey)
 	touch wg0.conf
 	echo "what is the ip of your server?"
 	read -r server
