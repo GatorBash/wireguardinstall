@@ -37,8 +37,9 @@ else
 	echo "[Interface]" >> wg0.conf
 	echo "PrivateKey = $key" >> wg0.conf
 	sleep 1
-	echo "Address = $client" >> wg0.conf
+	echo "Address = $client/32" >> wg0.conf
 	sleep 1
+	echo " " >> wg0.conf
 	echo "Do you have the publickey file? y/n"
 	read -r rep
 	if [ "$rep" = n ]
