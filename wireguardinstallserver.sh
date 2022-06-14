@@ -31,7 +31,7 @@ else
 	echo "Address = <personalized private ip>" >> wg0.conf
 	echo "ListenPort = 65535" >> wg0.conf
 	echo "Adding some IPtables BS."
-	echo "PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE" >> wg0.conf
+	echo "PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; iptables -A FORWARD -i wg0 -o wg0 -j ACCEPT" >> wg0.conf
 	echo "PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE" >> wg0.conf
 	echo " " >> wg0.conf
 	echo "[Peer]" >> wg0.conf
