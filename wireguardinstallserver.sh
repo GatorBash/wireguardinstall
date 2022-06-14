@@ -1,6 +1,5 @@
 #!/bin/bash
 
-key=$(cat privatekey)
 dir=/etc/wireguard
 
 #this ensures the user is root
@@ -25,6 +24,7 @@ else
 	cd $dir
 	umask 077
 	wg genkey | tee privatekey | wg pubkey > publickey
+	key=$(cat privatekey)
 	touch wg0.conf
 	echo "[Interface]" >> wg0.conf
 	echo "PrivateKey = ""$key""" >> wg0.conf
