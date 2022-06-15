@@ -25,5 +25,8 @@ You'll need to do just a couple of things.
 
 # Issues
 
+- need to add ifmetric script to dispatcher.d
+- fullwginstall.sh doesn't work yet
+
 If you have any issues please let me know so I can get'em fixed.
 
