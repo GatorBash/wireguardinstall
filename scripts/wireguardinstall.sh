@@ -20,6 +20,7 @@ else
 	apt install wireguard wireguard-dkms wireguard-tools -y
 	wait
 	apt install ifmetric
+	wait
 	clear
 	echo "Hopefully that didn't error out"
 	sleep 5
