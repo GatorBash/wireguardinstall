@@ -70,7 +70,7 @@ read -r cell
 if [ "$cell" = y ]
 then
 	touch /etc/NetworkManager/dispatcher.d/set_metrics.sh
-	cellsh = /etc/NetworkManager/dispatcher.d/set_metrics.sh
+	cellsh=/etc/NetworkManager/dispatcher.d/set_metrics.sh
 	echo "#!/bin/bash/" >> $cellsh
 	echo " " >> $cellsh
 	echo "ifmetric wwan0 1" >> $cellsh
@@ -81,3 +81,5 @@ then
 	echo "ifmetric eth0 700" >> $cellsh
 	chmod +x $cellsh
 fi
+echo "Ok we are gonna Daemonize this too. Let's go"
+sleep 3
