@@ -65,3 +65,19 @@ else
 #the sed command is ment to add in your private key to the config file but it has been hit or miss
 #sed -i "/$old_key/c\\$old_key$key" wg0.conf
 fi
+echo "Are you using a cell hat? y/n"
+read -r cell
+if [ "$cell" = y ]
+then
+	touch /etc/NetworkManager/dispatcher.d/set_metrics.sh
+	cellsh = /etc/NetworkManager/dispatcher.d/set_metrics.sh
+	echo "#!/bin/bash/" >> $cellsh
+	echo " " >> $cellsh
+	echo "ifmetric wwan0 1" >> $cellsh
+	echo "ifmetric usb0 2" >> $cellsh
+	echo "ifmetric wg0 3" >> $cellsh
+	echo "ifmetric wlan1 10" >> $cellsh
+	echo "ifmetric wlan0 20" >> $cellsh
+	echo "ifmetric eth0 700" >> $cellsh
+	chmod +x $cellsh
+fi
