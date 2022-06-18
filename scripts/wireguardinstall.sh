@@ -81,5 +81,21 @@ then
 	echo "ifmetric eth0 700" >> $cellsh
 	chmod +x $cellsh
 fi
-echo "Ok we are gonna Daemonize this too. Let's go"
+
+echo "Do you want wireguard to start when the device come on? y/n"
+read -r service
+if [ "$service" = y ]
+then
+	echo "Ok we are gonna Daemonize this too. Let's go"
+	sleep 3
+	systemctl enable wg-quick@wg0
+	wait
+	echo "Wireguard service created."
+	systemctl start wg-quick@wg0
+	wait
+	echo "Wireguard service started."
+fi
 sleep 3
+echo "That's it for now."
+echo "GLHF"
+exit 0
