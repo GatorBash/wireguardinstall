@@ -43,7 +43,7 @@ else
 	echo " " >> wg0.conf
 	echo "Do you have the publickey file? y/n"
 	read -r rep
-	if [ "$rep" = n ]
+	if [ "$rep" == n ]
 	then
 		echo "[Peer]" >> wg0.conf
 		echo "PublicKey = <server public key>" >> wg0.conf
@@ -67,7 +67,7 @@ else
 fi
 echo "Are you using a cell hat? y/n"
 read -r cell
-if [ "$cell" = y ]
+if [ "$cell" == y ]
 then
 	touch /etc/NetworkManager/dispatcher.d/set_metrics.sh
 	cellsh=/etc/NetworkManager/dispatcher.d/set_metrics.sh
@@ -84,7 +84,7 @@ fi
 
 echo "Do you want wireguard to start when the device come on? y/n"
 read -r service
-if [ "$service" = y ]
+if [ "$service" == y ]
 then
 	echo "Ok we are gonna Daemonize this too. Let's go"
 	sleep 3
