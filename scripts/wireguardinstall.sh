@@ -100,6 +100,16 @@ then
 	wait
 	echo "Wireguard service started."
 fi
+#write logs to ram
+#wget https://github.com/azlux/log2ram/archive/master.tar.gz -O log2ram.tar.gz
+#wait
+#tar xf log2ram.tar.gz
+#cd log2ram-master
+#./install
+#wait
+
+wait
+
 sleep 3
 echo "That's it for now."
 echo "GLHF"
