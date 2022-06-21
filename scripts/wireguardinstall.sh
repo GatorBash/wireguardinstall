@@ -8,16 +8,11 @@ then
    echo "This script must be run as root; run \"sudo -i\" this will log you into root." 
    exit 1
 else
-	echo "ok we are gonna make this nice"
-	sleep 3
-	echo "and...."
-	sleep 3
-	echo "easy"
-	sleep 5
 	echo "First we're going to update and install some things"
+	sleep 5
 	apt update -y
 	wait
-	apt install wireguard 
+	apt install wireguard -y
 	wait
 	apt install wireguard-dkms -y
 	wait
@@ -30,7 +25,7 @@ else
 	sleep 5
 	umask 077
 	wg genkey | tee $dir/privatekey | wg pubkey > $dir/publickey
-	key=$(cat privatekey)
+	key=$(cat $dir/privatekey)
 	touch wg0.conf
 	echo "what is the ip of your server?"
 	read -r server
@@ -38,12 +33,14 @@ else
 	read -r port
 	echo "What IP are you going to use for your client?"
 	read -r client
-	echo "[Interface]" >> wg0.conf
-	echo "PrivateKey = $key" >> wg0.conf
+	echo "[Interface]" >> $dir/wg0.conf
 	sleep 1
-	echo "Address = $client/32" >> wg0.conf
+	echo "PrivateKey = $key" >> $dir/wg0.conf
 	sleep 1
-	echo " " >> wg0.conf
+	echo "Address = $client/32" >> $dir/wg0.conf
+	sleep 1
+	echo " " >> $dir/wg0.conf
+	sleep 1
 	echo "Do you have the publickey file? y/n"
 	read -r rep
 	if [ "$rep" == n ]
