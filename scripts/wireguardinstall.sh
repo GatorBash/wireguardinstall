@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #old_key='PrivateKey = '
-#dir='/etc/wireguard'
+dir='/etc/wireguard'
 
 if [[ $EUID -ne 0 ]]
 then
@@ -17,16 +17,19 @@ else
 	echo "First we're going to update and install some things"
 	apt update -y
 	wait
-	apt install wireguard wireguard-dkms wireguard-tools -y
+	apt install wireguard 
 	wait
-	apt install ifmetric
+	apt install wireguard-dkms -y
+	wait
+	apt install wireguard-tools -y
+	wait
+	apt install ifmetric -y
 	wait
 	clear
 	echo "Hopefully that didn't error out"
 	sleep 5
-	cd /etc/wireguard
 	umask 077
-	wg genkey | tee privatekey | wg pubkey > publickey
+	wg genkey | tee $dir/privatekey | wg pubkey > $dir/publickey
 	key=$(cat privatekey)
 	touch wg0.conf
 	echo "what is the ip of your server?"
