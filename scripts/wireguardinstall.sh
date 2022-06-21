@@ -45,22 +45,22 @@ else
 	read -r rep
 	if [ "$rep" == n ]
 	then
-		echo "[Peer]" >> wg0.conf
-		echo "PublicKey = <server public key>" >> wg0.conf
-		echo "AllowedIPs = 0.0.0.0/0" >> wg0.conf
-		echo "Endpoint = $server:$port" >> wg0.conf
+		echo "[Peer]" >> $dir/wg0.conf
+		echo "PublicKey = <server public key>" >> $dir/wg0.conf
+		echo "AllowedIPs = 0.0.0.0/0" >> $dir/wg0.conf
+		echo "Endpoint = $server:$port" >> $dir/wg0.conf
 		sleep 1
-		echo "PersistentKeepalive = 25" >> wg0.conf
+		echo "PersistentKeepalive = 25" >> $dir/wg0.conf
 	else
 		echo "Type in the absolute path to the public key file"
 		read -r pub
 		pubkey=$(cat "$pub")
-		echo "[Peer]" >> wg0.conf
-		echo "PublicKey = ""$pubkey""" >> wg0.conf
-		echo "AllowedIPs = 0.0.0.0/0" >> wg0.conf
-		echo "Endpoint = ""$server"":""$port""" >> wg0.conf
+		echo "[Peer]" >> $dir/wg0.conf
+		echo "PublicKey = ""$pubkey""" >> $dir/wg0.conf
+		echo "AllowedIPs = 0.0.0.0/0" >> $dir/wg0.conf
+		echo "Endpoint = ""$server"":""$port""" >> $dir/wg0.conf
 		sleep 1
-		echo "PersistentKeepalive = 25" >> wg0.conf
+		echo "PersistentKeepalive = 25" >> $dir/wg0.conf
 	fi
 #the sed command is ment to add in your private key to the config file but it has been hit or miss
 #sed -i "/$old_key/c\\$old_key$key" wg0.conf
