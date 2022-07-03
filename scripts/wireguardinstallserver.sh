@@ -42,4 +42,44 @@ else
 	clear
 	echo "Done GLHF!"
 fi
-
+echo "Do you want to add more Peers to your config?"
+echo "Is that true? y/n"
+read -r peer
+while [ "$peer" == y ]
+do
+	echo "Ok lets do this?"
+	umask 077
+	echo "What IP do you want to use for your client? Include the CIDR."
+	read -r ip
+	echo "Do you have the public key for the client? y/n"
+	read -r c
+	if [ "$c" == n ]
+	then
+		echo "Ok you will have to add it to the file later"
+	else
+		echo "2ez what is the absolute path to the file?"
+		read -r pub
+		pubkey=$(cat "$pub")
+	fi
+	if [ "$c" == n ]
+	then
+		echo " " >> $file
+		sleep 1
+		echo "[Peer]" >> $file
+		sleep 1
+		echo "PublicKey = <client pub key>" >> $file
+		sleep 1
+		echo "AllowedIPs = $ip" >> $file
+	else
+		echo " " >> $file
+		sleep 1
+		echo "[Peer]" >> $file
+		sleep 1
+		echo "PublicKey = ""$pubkey""" >> $file
+		sleep 1
+		echo "AllowedIPs = ""$ip""" >> $file
+	fi
+	echo "Do you want to make another peer for your config? y/n"
+	read -r peer
+done
+echo "Ok that should do it GLHF"
