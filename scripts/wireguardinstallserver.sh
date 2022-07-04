@@ -43,7 +43,7 @@ else
 	echo "Done GLHF!"
 fi
 echo "Do you want to add more Peers to your config?"
-echo "Is that true? y/n"
+echo "y/n"
 read -r peer
 while [ "$peer" == y ]
 do
@@ -56,13 +56,6 @@ do
 	if [ "$c" == n ]
 	then
 		echo "Ok you will have to add it to the file later"
-	else
-		echo "2ez what is the absolute path to the file?"
-		read -r pub
-		pubkey=$(cat "$pub")
-	fi
-	if [ "$c" == n ]
-	then
 		echo " " >> $file
 		sleep 1
 		echo "[Peer]" >> $file
@@ -71,6 +64,9 @@ do
 		sleep 1
 		echo "AllowedIPs = $ip" >> $file
 	else
+		echo "2ez what is the absolute path to the file?"
+		read -r pub
+		pubkey=$(cat "$pub")
 		echo " " >> $file
 		sleep 1
 		echo "[Peer]" >> $file
